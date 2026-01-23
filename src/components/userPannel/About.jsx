@@ -40,10 +40,10 @@ const About = () => {
                     className="grid grid-cols-1 sm:grid-cols-2 gap-6"
                 >
                     {[
-                        { count: "02+", label: "Years Experience" },
-                        { count: "20+", label: "Projects Completed" },
-                        { count: "10+", label: "Happy Clients" },
-                        { count: "500+", label: "DSA Problems" }
+                        { count: "00", label: "Years Experience" },
+                        { count: "02+", label: "Projects Completed" },
+                        { count: "01+", label: "Happy Clients" },
+                        { count: "10+", label: "DSA Problems" }
                     ].map((stat, index) => (
                         <div key={index} className="glass-panel p-6 rounded-2xl flex flex-col justify-center items-center text-center hover:border-[#00ff88]/50 transition-colors duration-300 group">
                             <h3 className="text-4xl font-bold text-white mb-2 group-hover:text-[#00ff88] transition-colors">{stat.count}</h3>
