@@ -1,63 +1,66 @@
-import Masonry from "react-masonry-css";
-import "./styles.css";
-import * as motion from "motion/react-client";
-
-const images = [
-  "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500", // React
-  "https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?q=80&w=500", // Frontend
-  "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=500", // Coding
-  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500", // JS
-  "https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=500", // Dev
-  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=500", // Laptop
-];
-
-const breakpointColumnsObj = {
-  default: 3,
-  1100: 3,
-  700: 2,
-  500: 1
-};
+import { motion } from "framer-motion";
 
 const Experience = () => {
+  const experiences = [
+    {
+      role: "Full Stack Developer Intern",
+      company: "Tech Solutions Inc.",
+      period: "June 2024 - Present",
+      description: "Developing scalable web applications using the MERN stack. Collaborating with cross-functional teams to deliver high-quality software solutions.",
+      tech: ["React", "Node.js", "MongoDB", "Redux"]
+    },
+    // Add more experiences here if needed
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-6 py-20">
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16"
+    <div className="w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12"
       >
-        <h2 className="text-4xl md:text-6xl font-black text-white mb-4">Experience Gallery</h2>
-        <p className="text-gray-400">A visual look at my journey and technical milestones.</p>
+        <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 mb-6">
+          Work <span className="text-[#00ff88]">Experience</span>
+        </h2>
+        <div className="h-1 w-20 bg-[#00ff88] rounded-full"></div>
       </motion.div>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {images.map((src, index) => (
+      <div className="relative border-l border-white/10 ml-4 md:ml-10 space-y-12">
+        {experiences.map((exp, index) => (
           <motion.div
             key={index}
-            className="card group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
+            transition={{ delay: index * 0.1 }}
+            className="relative pl-8 md:pl-12"
           >
-            <motion.img
-              src={src}
-              alt={`milestone-${index}`}
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            
-            {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-              <p className="text-white font-medium text-sm">Project Milestone #{index + 1}</p>
+            {/* Timeline Dot */}
+            <div className="absolute -left-[5px] top-0 w-3 h-3 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88]"></div>
+
+            <div className="glass-panel p-8 rounded-3xl border-l-4 border-l-[#00ff88]">
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{exp.role}</h3>
+                  <p className="text-[#00ff88] font-medium">{exp.company}</p>
+                </div>
+                <span className="text-sm text-gray-400 mt-2 md:mt-0 font-mono border border-white/10 px-3 py-1 rounded-full">{exp.period}</span>
+              </div>
+
+              <p className="text-gray-300 leading-relaxed mb-6">{exp.description}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {exp.tech.map((tech, idx) => (
+                  <span key={idx} className="text-xs font-medium text-gray-400 bg-white/5 px-3 py-1 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
-      </Masonry>
+      </div>
     </div>
   );
 };
