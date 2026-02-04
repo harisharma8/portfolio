@@ -5,7 +5,7 @@ import About from "./components/userPannel/About";
 import Skills from "./components/userPannel/Skills";
 import Experience from "./components/userPannel/Experience";
 import Project from "./components/userPannel/Project";
-import Contact from "./components/userPannel/contact";
+import Contact from "./components/userPannel/Contact";
 import LoadingPage from "./components/userPannel/LoadingPage";
 import Footer from "./components/userPannel/Footer";
 
